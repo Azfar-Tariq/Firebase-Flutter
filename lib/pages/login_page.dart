@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,7 +13,29 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   // hide/show passord
-  bool _obscurePassword = true;
+  final bool _obscurePassword = true;
+
+  // email controller
+  final _emailController = TextEditingController();
+
+  // password controller
+  final _passwordController = TextEditingController();
+
+  // sign in function
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+  }
+
+  @override
+  void dispose() {
+    // helps memory management
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     child: TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
@@ -100,6 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     child: TextField(
+                      controller: _passwordController,
                       obscureText: _obscurePassword,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
@@ -119,21 +145,24 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 25.0,
                   ),
-                  child: Container(
-                    padding: EdgeInsets.all(
-                      20.0,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Sign In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                  child: GestureDetector(
+                    onTap: signIn,
+                    child: Container(
+                      padding: EdgeInsets.all(
+                        20.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Sign In',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
                     ),
