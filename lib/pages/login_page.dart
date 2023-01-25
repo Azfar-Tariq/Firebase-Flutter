@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_flutter/pages/forgot_password.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -136,6 +137,38 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: 'Password',
                       ),
                     ),
+                  ),
+                ),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPasswordPage();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Forgot Password',
+                          style: TextStyle(
+                            color: Colors.deepPurple[400],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
 
