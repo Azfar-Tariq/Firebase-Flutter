@@ -18,6 +18,15 @@ class _RegisterPageState extends State<RegisterPage> {
   // hide/show passord
   final bool _obscurePassword = true;
 
+  // first name controller
+  final _firstNameController = TextEditingController();
+
+  // last name controller
+  final _lastNameController = TextEditingController();
+
+  // age controller
+  final _ageController = TextEditingController();
+
   // email controller
   final _emailController = TextEditingController();
 
@@ -29,6 +38,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _ageController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
@@ -65,18 +77,48 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Icon(
                   Icons.adb,
-                  size: 100,
+                  size: 75,
                 ),
 
                 SizedBox(
-                  height: 75,
+                  height: 30,
                 ),
 
                 Text(
                   "Hello There!",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 50,
+                    fontSize: 40,
+                  ),
+                ),
+
+                SizedBox(
+                  height: 50,
+                ),
+
+                // first name text field
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25.0,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(
+                        12.0,
+                      ),
+                    ),
+                    child: TextField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(12.0),
+                        border: InputBorder.none,
+                        hintText: 'First Name',
+                      ),
+                    ),
                   ),
                 ),
 
@@ -84,15 +126,65 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 10,
                 ),
 
-                Text(
-                  "Register below with your details",
-                  style: TextStyle(
-                    fontSize: 16,
+                // last name text field
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25.0,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(
+                        12.0,
+                      ),
+                    ),
+                    child: TextField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(12.0),
+                        border: InputBorder.none,
+                        hintText: 'Last Name',
+                      ),
+                    ),
                   ),
                 ),
 
                 SizedBox(
-                  height: 50,
+                  height: 10,
+                ),
+
+                // age text field
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25.0,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(
+                        12.0,
+                      ),
+                    ),
+                    child: TextField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(12.0),
+                        border: InputBorder.none,
+                        hintText: 'Age',
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  height: 10,
                 ),
 
                 // email text field
@@ -112,6 +204,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     child: TextField(
                       controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
@@ -143,6 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: TextField(
                       controller: _passwordController,
                       obscureText: _obscurePassword,
+                      keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
@@ -174,6 +268,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: TextField(
                       controller: _confirmPasswordController,
                       obscureText: _obscurePassword,
+                      keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
