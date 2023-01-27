@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -49,11 +50,30 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future signUp() async {
     if (passwordConfirmed()) {
+      // create user
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+
+      // add user details
+      addUserDetails(
+        _firstNameController.text.trim(),
+        _lastNameController.text.trim(),
+        int.parse(_ageController.text.trim()),
+        _emailController.text.trim(),
+      );
     }
+  }
+
+  Future addUserDetails(
+      String firstName, String lastName, int age, String email) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first name': firstName,
+      'last name': lastName,
+      'age': age,
+      'email': email,
+    });
   }
 
   bool passwordConfirmed() {
@@ -77,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Icon(
                   Icons.adb,
-                  size: 75,
+                  size: 80,
                 ),
 
                 SizedBox(
@@ -93,7 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
 
                 SizedBox(
-                  height: 50,
+                  height: 40,
                 ),
 
                 // first name text field
@@ -112,7 +132,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     child: TextField(
-                      controller: _emailController,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.next,
+                      controller: _firstNameController,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
@@ -142,7 +164,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     child: TextField(
-                      controller: _emailController,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.next,
+                      controller: _lastNameController,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
@@ -172,7 +196,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     child: TextField(
-                      controller: _emailController,
+                      textInputAction: TextInputAction.next,
+                      controller: _ageController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
@@ -203,6 +228,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     child: TextField(
+                      textInputAction: TextInputAction.next,
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -234,6 +260,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     child: TextField(
+                      textInputAction: TextInputAction.next,
                       controller: _passwordController,
                       obscureText: _obscurePassword,
                       keyboardType: TextInputType.visiblePassword,
@@ -266,6 +293,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     child: TextField(
+                      textInputAction: TextInputAction.done,
                       controller: _confirmPasswordController,
                       obscureText: _obscurePassword,
                       keyboardType: TextInputType.visiblePassword,

@@ -99,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     child: TextField(
+                      textInputAction: TextInputAction.next,
                       controller: _emailController,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
@@ -129,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     child: TextField(
+                      textInputAction: TextInputAction.done,
                       controller: _passwordController,
                       obscureText: _obscurePassword,
                       decoration: InputDecoration(
