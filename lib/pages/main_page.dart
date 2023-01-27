@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 
-import '../home_page.dart';
+import 'home_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

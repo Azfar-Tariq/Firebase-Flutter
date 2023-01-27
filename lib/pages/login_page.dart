@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_flutter/pages/forgot_password.dart';
+import 'package:firebase_flutter/others/forgot_password.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
