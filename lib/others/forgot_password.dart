@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
+          return const AlertDialog(
             content: Text(
                 'Password reset link sent to your email. Check you email.'),
           );
@@ -70,8 +70,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 "Enter the email associated with your account and we'll send an email with instructions to reset your password",
                 style: TextStyle(
@@ -80,7 +80,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             Container(
@@ -95,27 +95,27 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
               child: TextField(
                 controller: _emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(12.0),
                   border: InputBorder.none,
                   hintText: 'Email',
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             GestureDetector(
               onTap: passwordReset,
               child: Container(
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   20.0,
                 ),
                 decoration: BoxDecoration(
                   color: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(12.0),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Send me an Email',
                     style: TextStyle(

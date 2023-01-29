@@ -13,10 +13,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser;
-
   // document IDs
   List<String> docIDs = [];
+
+  final user = FirebaseAuth.instance.currentUser;
 
   // get document IDs
   Future getDocIDs() async {

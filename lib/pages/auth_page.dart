@@ -11,6 +11,7 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   bool showLoginPage = true;
+
   void toggleScreens() {
     setState(() {
       showLoginPage = !showLoginPage;

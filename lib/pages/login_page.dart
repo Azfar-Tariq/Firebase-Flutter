@@ -1,37 +1,30 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter/others/forgot_password.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  final VoidCallback showRegisterPage;
   const LoginPage({
     super.key,
     required this.showRegisterPage,
   });
+
+  final VoidCallback showRegisterPage;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // hide/show passord
-  final bool _obscurePassword = true;
-
   // email controller
   final _emailController = TextEditingController();
 
+  // hide/show passord
+  final bool _obscurePassword = true;
+
   // password controller
   final _passwordController = TextEditingController();
-
-  // sign in function
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-  }
 
   @override
   void dispose() {
@@ -39,6 +32,24 @@ class _LoginPageState extends State<LoginPage> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  // sign in function
+  Future signIn() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -51,16 +62,16 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.adb,
                   size: 100,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 75,
                 ),
 
-                Text(
+                const Text(
                   "Hello Again!",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -68,18 +79,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
-                Text(
+                const Text(
                   "Welcome Back, you've been missed",
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
 
@@ -101,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       textInputAction: TextInputAction.next,
                       controller: _emailController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'Email',
@@ -110,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -133,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                       textInputAction: TextInputAction.done,
                       controller: _passwordController,
                       obscureText: _obscurePassword,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'Password',
@@ -142,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -157,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return ForgotPasswordPage();
+                                return const ForgotPasswordPage();
                               },
                             ),
                           );
@@ -174,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -186,14 +197,14 @@ class _LoginPageState extends State<LoginPage> {
                   child: GestureDetector(
                     onTap: signIn,
                     child: Container(
-                      padding: EdgeInsets.all(
+                      padding: const EdgeInsets.all(
                         20.0,
                       ),
                       decoration: BoxDecoration(
                         color: Colors.deepPurple,
                         borderRadius: BorderRadius.circular(12.0),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Sign In',
                           style: TextStyle(
@@ -207,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
 
@@ -215,7 +226,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Don\'t have an account',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

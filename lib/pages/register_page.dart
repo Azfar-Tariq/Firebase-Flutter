@@ -1,23 +1,28 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
-  final VoidCallback showLoginPage;
   const RegisterPage({
     super.key,
     required this.showLoginPage,
   });
+
+  final VoidCallback showLoginPage;
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // hide/show passord
-  final bool _obscurePassword = true;
+  // age controller
+  final _ageController = TextEditingController();
+
+  // confirm password controller
+  final _confirmPasswordController = TextEditingController();
+
+  // email controller
+  final _emailController = TextEditingController();
 
   // first name controller
   final _firstNameController = TextEditingController();
@@ -25,17 +30,11 @@ class _RegisterPageState extends State<RegisterPage> {
   // last name controller
   final _lastNameController = TextEditingController();
 
-  // age controller
-  final _ageController = TextEditingController();
-
-  // email controller
-  final _emailController = TextEditingController();
+  // hide/show passord
+  final bool _obscurePassword = true;
 
   // password controller
   final _passwordController = TextEditingController();
-
-  // confirm password controller
-  final _confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
@@ -95,16 +94,16 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.adb,
                   size: 80,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
 
-                Text(
+                const Text(
                   "Hello There!",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -112,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
 
@@ -135,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       textCapitalization: TextCapitalization.words,
                       textInputAction: TextInputAction.next,
                       controller: _firstNameController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'First Name',
@@ -144,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -167,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       textCapitalization: TextCapitalization.words,
                       textInputAction: TextInputAction.next,
                       controller: _lastNameController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'Last Name',
@@ -176,7 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -199,7 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       textInputAction: TextInputAction.next,
                       controller: _ageController,
                       keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'Age',
@@ -208,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -231,7 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       textInputAction: TextInputAction.next,
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'Email',
@@ -240,7 +239,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -264,7 +263,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _passwordController,
                       obscureText: _obscurePassword,
                       keyboardType: TextInputType.visiblePassword,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'Password',
@@ -273,7 +272,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -297,7 +296,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _confirmPasswordController,
                       obscureText: _obscurePassword,
                       keyboardType: TextInputType.visiblePassword,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(12.0),
                         border: InputBorder.none,
                         hintText: 'Confirm Password',
@@ -306,7 +305,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
 
@@ -318,14 +317,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: GestureDetector(
                     onTap: signUp,
                     child: Container(
-                      padding: EdgeInsets.all(
+                      padding: const EdgeInsets.all(
                         20.0,
                       ),
                       decoration: BoxDecoration(
                         color: Colors.deepPurple,
                         borderRadius: BorderRadius.circular(12.0),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
@@ -339,7 +338,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
 
@@ -347,7 +346,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Already a member',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
