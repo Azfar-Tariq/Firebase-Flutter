@@ -31,9 +31,9 @@ class _RegisterPageState extends State<RegisterPage> {
   // last name controller
   final _lastNameController = TextEditingController();
 
+  bool _obscureConfirmPassword = true;
   // hide/show passord
   bool _obscurePassword = true;
-  bool _obscureConfirmPassword = true;
 
   // password controller
   final _passwordController = TextEditingController();
@@ -106,6 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
