@@ -291,6 +291,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               _obscurePassword
                                   ? Icons.visibility
                                   : Icons.visibility_off,
+                              color: Colors.deepPurple[400],
                             ),
                           ),
                           contentPadding: const EdgeInsets.all(12.0),
@@ -336,6 +337,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               _obscureConfirmPassword
                                   ? Icons.visibility
                                   : Icons.visibility_off,
+                              color: Colors.deepPurple[400],
                             ),
                           ),
                           contentPadding: const EdgeInsets.all(12.0),

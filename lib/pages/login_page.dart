@@ -165,6 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                               _obscurePassword
                                   ? Icons.visibility
                                   : Icons.visibility_off,
+                              color: Colors.deepPurple[400],
                             ),
                           ),
                           contentPadding: const EdgeInsets.all(12.0),
