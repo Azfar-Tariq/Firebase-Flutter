@@ -279,7 +279,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: TextField(
                         textInputAction: TextInputAction.next,
                         controller: _passwordController,
-                        obscureText: _obscurePassword,
                         decoration: InputDecoration(
                           suffixIcon: GestureDetector(
                             onTap: () {
@@ -324,7 +323,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: TextField(
                         textInputAction: TextInputAction.done,
                         controller: _confirmPasswordController,
-                        obscureText: _obscureConfirmPassword,
                         decoration: InputDecoration(
                           suffixIcon: GestureDetector(
                             onTap: () {

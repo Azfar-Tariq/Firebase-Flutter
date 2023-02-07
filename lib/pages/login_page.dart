@@ -153,7 +153,6 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         textInputAction: TextInputAction.done,
                         controller: _passwordController,
-                        obscureText: _obscurePassword,
                         decoration: InputDecoration(
                           suffixIcon: GestureDetector(
                             onTap: () {
